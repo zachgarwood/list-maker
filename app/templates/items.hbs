@@ -1,0 +1,12 @@
+<ol>
+{{#each}}
+    <li>
+        {{#link-to 'item' id}}
+            <p>{{text}}</p>
+            {{#if image}}
+                <img alt="{{text}}" {{bind-attr src=image}}>
+            {{/if}}
+        {{/link-to}}
+    </li>
+{{/each}}
+</ol>
