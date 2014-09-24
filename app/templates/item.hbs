@@ -1,4 +1,3 @@
-{{text}}
-{{#if image}}
-    <img alt="{{text}}" {{bind-attr src=image}}>
-{{/if}}
+{{#link-to 'lists'}}Lists{{/link-to}}
+<p>{{#link-to 'list' model.list.id}}{{model.list.title}}{{/link-to}}</p>
+{{list-item item=model}}

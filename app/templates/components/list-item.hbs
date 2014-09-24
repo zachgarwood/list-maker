@@ -1,0 +1,6 @@
+{{#with item}}
+    {{#link-to 'item' id}}<p>{{text}}</p>{{/link-to}}
+    {{#if image}}
+        <img alt="{{text}}" {{bind-attr src=image}}>
+    {{/if}}
+{{/with}}
