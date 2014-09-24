@@ -1,4 +1,4 @@
-ListMaker.List = DS.Model.extend({
+App.List = DS.Model.extend({
     description: DS.attr('string'),
     items: DS.hasMany('item', {async: true}),
     serializedTitle: Ember.computed('description', function() {
