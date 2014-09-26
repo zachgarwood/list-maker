@@ -1,6 +1,8 @@
 <div>Lists</div>
+{{#link-to 'lists.create'}}Create{{/link-to}}
 <ul>
-{{#each list in controller}}
-    <li>{{#link-to 'list' list}}{{list.title}}{{/link-to}}</li>
-{{/each}}
+    {{outlet}}
+    {{#each list in controller}}
+        <li>{{#link-to 'list' list}}{{list.title}}{{/link-to}}</li>
+    {{/each}}
 </ul>
