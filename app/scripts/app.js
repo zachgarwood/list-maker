@@ -1,8 +1,5 @@
-var App = window.App = Ember.Application.create({
-    LOG_TRANSITIONS: true,
-    LOG_ACTIVE_GENERATION: true
-});
-App.appName = 'List Maker';
+var App = window.App = Ember.Application.create();
+App.appName = 'List Maker (alpha)';
 
 require('scripts/controllers/*');
 require('scripts/store');

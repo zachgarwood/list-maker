@@ -1,15 +1,15 @@
 App.ListController = Ember.ObjectController.extend({
     actions: {
         addItem: function() {
-            var text = this.get('itemText'); 
-            if (!text) return false;
-            if (!text.trim()) return;
+            var title = this.get('itemTitle'); 
+            if (!title) return false;
+            if (!title.trim()) return;
             var list = this.get('model');
                 
             var item = this.store.createRecord(
                 'item',
                 {
-                    text: text,
+                    title: title,
                     list: list 
                 }
             );
@@ -18,7 +18,7 @@ App.ListController = Ember.ObjectController.extend({
                 list.save();
             });
 
-            this.set('itemText', '');
+            this.set('itemTitle', '');
         }
     }
 });

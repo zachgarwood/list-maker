@@ -1,5 +1,6 @@
 App.Item = DS.Model.extend({
+    description: DS.attr('string'),
     image: DS.attr('string'),
     list: DS.belongsTo('list', {async: true}),
-    text: DS.attr('string')
+    title: DS.attr('string')
 });

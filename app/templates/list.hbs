@@ -1,7 +1,9 @@
 {{#link-to 'lists'}}Lists{{/link-to}}
 <div>{{#link-to 'list'}}{{title}}{{/link-to}}</div>
 <div>
-    {{input type="text" value=itemText placeholder="New List Item" action="addItem"}}
+    {{input required="required" type="text" value=itemTitle placeholder="New List Item" action="addItem"}}
+    {{textarea value=itemDescription placeholder="Item Description" action="addItem"}}
+    {{input type="text" value=itemImage placeholder="Image URL" action="addItem"}}
 </div>
 <ol>
     {{#each item in items}}
