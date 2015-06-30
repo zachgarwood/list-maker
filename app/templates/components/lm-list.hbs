@@ -1,0 +1,18 @@
+<div class='list'>
+    <h2>{{list.description}}</h2>
+
+
+    {{input value=title placeholder='Title'}}
+    {{textarea value=description placeholder='Description'}}
+    {{input value=image placeholder='http://pictures.com/image.png'}}
+    <button {{action 'addItem'}}>Add to list</button>
+
+    <ul>
+        {{#if featuredItem}}
+            <em>{{lm-item item=featuredItem}}</em>
+        {{/if}}
+        {{#each list.items as |item|}}
+            {{lm-item item=item}}
+        {{/each}}
+    </ul>
+</div>

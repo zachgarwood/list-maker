@@ -1,3 +1,1 @@
-{{#link-to 'lists'}}Lists{{/link-to}}
-<p>{{#link-to 'list' model.list.id}}{{model.list.title}}{{/link-to}}</p>
-{{list-item item=model}}
+{{lm-list list=model.list featuredItem=model action='addItem'}}

@@ -1,8 +1,9 @@
-<div>Lists</div>
-{{#link-to 'lists.create'}}Create{{/link-to}}
-<ul>
-    {{outlet}}
-    {{#each list in controller}}
-        <li>{{#link-to 'list' list}}{{list.title}}{{/link-to}}</li>
-    {{/each}}
-</ul>
+<h2>Lists</h2>
+
+{{#each model as |list|}}
+    <div>
+        {{#link-to 'list' list}}
+            {{list.description}}
+        {{/link-to}}
+    </div>
+{{/each}}

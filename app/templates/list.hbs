@@ -1,14 +1,1 @@
-{{#link-to 'lists'}}Lists{{/link-to}}
-<div>{{#link-to 'list'}}{{title}}{{/link-to}}</div>
-<div>
-    {{input required="required" type="text" value=itemTitle placeholder="New List Item" action="addItem"}}
-    {{textarea value=itemDescription placeholder="Item Description" action="addItem"}}
-    {{input type="text" value=itemImage placeholder="Image URL" action="addItem"}}
-</div>
-<ol>
-    {{#each item in items}}
-        <li>
-            {{list-item item=item}}
-        </li>
-    {{/each}}
-</ol>
+{{lm-list list=model action='addItem'}}
