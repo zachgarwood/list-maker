@@ -1,3 +1,9 @@
 <h1 id="title">{{#link-to 'lists'}}List Maker (alpha){{/link-to}}</h1>
-
-{{outlet}}
+{{#if session.isAuthenticated}}
+    Logged in as {{session.currentUser.displayName}}
+    <button {{action "signOut"}}>Sign out</button>
+    {{outlet}}
+{{else}}
+    <button {{action "signIn" "facebook"}}>Sign in</button>
+    <p>You must sign in.</p>
+{{/if}}
