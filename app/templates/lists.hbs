@@ -1,5 +1,14 @@
 <h2>Lists</h2>
 
+{{#if session.isAuthenticated}}
+    {{input value=description placeholder='List description'}}
+    <button {{action 'create'}}>Add list</button>
+{{else if session.isWorking}}
+    <p>Authenticating...</p>
+{{else}}
+    <p>Sign in to create a list!</p>
+{{/if}}
+
 {{#each model as |list|}}
     <div>
         {{#link-to 'list' list}}
