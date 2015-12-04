@@ -8,9 +8,9 @@ export default Ember.Route.extend({
     actions: {
         signIn: function(provider) {
             var route = this;
-            this.get('session').open("firebase", { provider: provider }).then(function(data) {
+            this.get('session').open("firebase", { provider: provider }).then(function() {
                 route.transitionTo('/');
-            }, function(error) {
+            }, function() {
                 route.transitionTo('/');
             });
         },
