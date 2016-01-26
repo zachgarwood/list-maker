@@ -1,9 +1,20 @@
-<h1 id="title">{{#link-to 'lists'}}List Maker (alpha){{/link-to}}</h1>
-{{#if session.isAuthenticated}}
-    Logged in as {{session.currentUser.displayName}}
-    <button {{action "signOut"}}>Sign out</button>
+<nav class='navbar navbar-default'>
+    <div class='container'>
+        {{#link-to 'lists' class='navbar-brand'}}List Maker (alpha){{/link-to}}
+        <div class='navbar-right'>
+                {{#if session.isAuthenticated}}
+                    <p class='navbar-text'>
+                        Logged in as {{session.currentUser.displayName}}
+                    </p>
+                    {{#bs-button action='signOut' type='default' class='navbar-btn'}}
+                        Sign out
+                    {{/bs-button}}
+                {{else}}
+                    {{#link-to 'signin' class='navbar-text'}}Sign in{{/link-to}}
+                {{/if}}
+        </div>
+    </div>
+</nav>
+<div class='container'>
     {{outlet}}
-{{else}}
-    {{#link-to 'signin'}}Sign in{{/link-to}}
-    {{outlet}}
-{{/if}}
+</div>
