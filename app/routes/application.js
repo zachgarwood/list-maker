@@ -10,10 +10,13 @@ export default Ember.Route.extend({
       var route = this;
       var store = this.get('store');
       this.get('session').open('firebase', { provider: provider }).then(function(data) {
-        let currentUser = store.find('user', data.currentUser.id).then(function() {
+        store.find('user', data.currentUser.id).then(function() {
           // noop
         }, function() {
-          var user = store.createRecord('user', { id: data.currentUser.id, displayName: data.currentUser.displayName });
+          var user = store.createRecord(
+            'user',
+            { id: data.currentUser.id, displayName: data.currentUser.displayName }
+          );
           user.save();
         });
         route.transitionTo('/');
