@@ -1,4 +1,9 @@
-<p>Sign in:</p>
-<ul>
-    <li><button {{action "signIn" "facebook"}}>Sign in with Facebook</button></li>
-</ul>
+<div class='page-header'>
+    <h1>Sign In</h1>
+</div>
+
+{{#bs-button-group}}
+    {{#bs-button action='signIn' value='facebook' id='facebook-login-button'}}
+        {{fa-icon 'facebook'}} Sign in with Facebook
+    {{/bs-button}}
+{{/bs-button-group}}
