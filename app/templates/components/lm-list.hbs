@@ -1,18 +1,16 @@
-<div class='list'>
-    <h2>{{list.description}}</h2>
+<div class='page-header'>
+    <h1>{{list.description}}</h1>
+</div>
 
-
+<!--
     {{input value=title placeholder='Title'}}
     {{textarea value=description placeholder='Description'}}
     {{input value=image placeholder='http://pictures.com/image.png'}}
     <button {{action 'addItem'}}>Add to list</button>
 
-    <ul>
-        {{#if featuredItem}}
-            <em>{{lm-item item=featuredItem}}</em>
-        {{/if}}
-        {{#each list.items as |item|}}
-            {{lm-item item=item}}
-        {{/each}}
-    </ul>
+-->
+<div class='list-group'>
+    {{#each list.items as |item|}}
+        {{lm-item item=item}}
+    {{/each}}
 </div>
