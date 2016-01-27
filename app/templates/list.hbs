@@ -1,10 +1,10 @@
 <div class='page-header'>
+    <h2>{{list-title list=model}}</h2>
+
     {{#if belongsToUser}}
         {{bs-form-element value=model.description}}
         {{bs-button action='update' defaultText='Update' resolvedText='Saved'}}
         {{#bs-button action='delete' type='danger'}}Delete{{/bs-button}}
-    {{else}}
-        <h2>{{model.description}}</h2>
     {{/if}}
 </div>
 
