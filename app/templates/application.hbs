@@ -1,6 +1,17 @@
 <nav class='navbar navbar-default'>
     <div class='container'>
         {{#link-to 'lists' class='navbar-brand'}}List Maker (alpha){{/link-to}}
+        {{#if session.isAuthenticated}}
+            <ul class='nav navbar-nav'>
+                <li>
+                {{bs-button
+                    action='createList'
+                    class='navbar-btn'
+                    defaultText='Start new list'
+                }}
+                </li>
+            </ul>
+        {{/if}}
         <div class='navbar-right'>
                 {{#if session.isAuthenticated}}
                     <p class='navbar-text'>

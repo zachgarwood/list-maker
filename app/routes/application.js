@@ -2,10 +2,29 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   beforeModel: function() {
-    return this.get('session').fetch().catch(function() {});
+    return this.get('session').fetch().catch(function(error) {
+      console.log(error);
+    });
   },
 
   actions: {
+    createList() {
+      let route = this;
+      route.store.find(
+        'user',
+        route.get('session.currentUser.id')
+      ).then((user) => {
+        let list = route.store.createRecord('list', {
+          description: 'New untitled list!',
+          user: user,
+        });
+        list.save().then((list) => {
+          user.get('lists').addObject(list);
+          user.save();
+          route.transitionTo('list', list.id);
+        });
+      });
+    },
     signIn: function(provider) {
       var route = this;
       var store = this.get('store');

@@ -1,23 +1,16 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  actions: {
-    addItem: function(itemProperties) {
-      let controller = this;
-      let list = controller.get('model');
-      controller.store.find(
-        'user',
-        controller.get('session.currentUser.id')
-      ).then((user) => {
-        itemProperties['user'] = user;
-        let item = controller.store.createRecord('item', itemProperties);
-        item.save().then((item) => {
-          list.get('items').addObject(item);
-          list.save();
-          user.get('items').addObject(item);
-          user.save();
-        });
-      });
+  actions : {
+    delete() {
+      this.get('model').destroyRecord();
+      this.transitionToRoute('lists');
+    },
+    update(param, event, callback) {
+      return callback(this.get('model').save());
     }
-  }
+  },
+  belongsToUser: Ember.computed('model.user.id', 'session.currentUser.id', function() {
+    return this.get('model.user.id') === this.get('session.currentUser.id');
+  })
 });
