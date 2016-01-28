@@ -1,0 +1,25 @@
+<div class='list-group-item'>
+    <h3 class='list-group-item-heading'>{{#link-to 'list.item' model}}{{model.title}}{{/link-to}}</h3>
+    <p class='list-group-item-text'>
+        {{model.description}}
+    </p>
+    {{#if model.image}}
+        <p class='list-group-item-text'>
+            <img src='{{model.image}}' width='500px' alt='{{model.title}}'/>
+        </p>
+    {{/if}}
+    {{#if belongsToUser}}
+        {{#bs-button action='toggleEdit'}}Edit {{fa-icon 'caret-down'}}{{/bs-button}}
+    {{else}}
+        <p class='list-group-item-text'>by {{model.user.displayName}}</p>
+    {{/if}}
+</div>
+{{#if ableToEdit}}
+<div class='list-group-item active'>
+    {{bs-form-element value=model.title placeholder='title'}}
+    {{bs-form-element controlType='textarea' value=model.description placeholder='description'}}
+    {{bs-form-element value=model.image placeholder='http://image.com/xyz'}}
+    {{#bs-button action='update' type='success'}}{{fa-icon 'floppy-o'}}{{/bs-button}}
+    {{#bs-button action='delete' type='danger'}}{{fa-icon 'trash'}}{{/bs-button}}
+</div>
+{{/if}}
