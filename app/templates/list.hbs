@@ -2,22 +2,25 @@
     <h2>{{list-title list=model}}</h2>
 
     {{#if belongsToUser}}
-        {{bs-form-element value=model.description}}
-        {{bs-button action='update' defaultText='Update' resolvedText='Saved'}}
-        {{#bs-button action='delete' type='danger'}}Delete{{/bs-button}}
+        {{#bs-form formLayout='inline'}}
+            <div class='form-group'>
+                {{input value=model.description focus-out='update' class='form-control'}}
+            </div>
+            {{#bs-button action='delete' type='danger'}}
+                {{fa-icon 'trash'}} Delete
+            {{/bs-button}}
+            {{#bs-button action='addItem' type='primary'}}
+                {{fa-icon 'plus'}} Add new item
+            {{/bs-button}}
+        {{/bs-form}}
+    {{else}}
+        <p>by {{model.user.displayName}}</p>
     {{/if}}
 </div>
 
 <div class='list-group'>
-    {{#each model.items as |item|}}
-    <div class='list-group-item'>
-        <h3 class='list-group-item-heading'>{{item.title}}</h3>
-        <p class='list-group-item-text'>
-            {{item.description}}
-            {{#if item.image}}
-                <img src='{{item.image}}' alt='{{item.description}}'/>
-            {{/if}}
-        </p>
-    </div>
+    {{outlet}}
+    {{#each items as |item|}}
+        {{render 'list.item' item}}
     {{/each}}
 </div>
