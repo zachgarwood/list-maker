@@ -6,7 +6,13 @@
     {{#if model.image}}
         <p class='list-group-item-text'>
             <a href='{{model.image}}' target='_blank'>
-                <img src='{{model.image}}' alt='{{model.title}}'/>
+                {{#if gifV}}
+                    <video autoplay='' loop='' muted=''>
+                        <source type='video/webm' src='{{gifV}}'>
+                    </video>
+                {{else}}
+                    <img src='{{model.image}}' alt='{{model.title}}'>
+                {{/if}}
             </a>
         </p>
     {{/if}}

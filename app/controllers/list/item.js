@@ -22,5 +22,15 @@ export default Ember.Controller.extend({
   }),
   belongsToUser: Ember.computed('model.user.id', 'session.uid', function() {
     return this.get('model.user.id') === this.get('session.uid');
+  }),
+  gifV: Ember.computed('model.image', function() {
+    let imageParts = this.get('model.image').split('.');
+    let fileType = imageParts.pop();
+    if (fileType.toLowerCase() === 'gifv') {
+      imageParts.push('webm');
+      return imageParts.join('.');
+    } else {
+      return false;
+    }
   })
 });

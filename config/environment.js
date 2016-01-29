@@ -6,7 +6,9 @@ module.exports = function(environment) {
     environment: environment,
     contentSecurityPolicy: {
       'connect-src': "'self' https://auth.firebase.com wss://*.firebaseio.com",
-      'img-src': "'self' https://*.imgur.com"
+      'img-src': "'self' https://*.imgur.com",
+      'media-src': "'self' https://*.imgur.com",
+      'script-src': "'self' https://*.firebaseio.com",
     },
     firebase: 'https://brilliant-inferno-3512.firebaseio.com/',
     torii: { sessionServiceName: 'session' },
