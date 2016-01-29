@@ -4,7 +4,10 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'list-maker',
     environment: environment,
-    contentSecurityPolicy: { 'connect-src': "'self' https://auth.firebase.com wss://*.firebaseio.com" },
+    contentSecurityPolicy: {
+      'connect-src': "'self' https://auth.firebase.com wss://*.firebaseio.com",
+      'img-src': "'self' https://*.imgur.com"
+    },
     firebase: 'https://brilliant-inferno-3512.firebaseio.com/',
     torii: { sessionServiceName: 'session' },
     baseURL: '/',
