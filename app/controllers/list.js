@@ -13,7 +13,7 @@ export default Ember.Controller.extend({
       let controller = this;
       controller.store.find(
         'user',
-        controller.get('session.currentUser.id')
+        controller.get('session.uid')
       ).then((user) => {
         let list = controller.get('model');
         let item = controller.store.createRecord('item', { user: user, list: list, });
@@ -32,7 +32,7 @@ export default Ember.Controller.extend({
       return item.id !== this.get('itemId');
     });
   }),
-  belongsToUser: Ember.computed('model.user.id', 'session.currentUser.id', function() {
-    return this.get('model.user.id') === this.get('session.currentUser.id');
+  belongsToUser: Ember.computed('model.user.id', 'session.uid', function() {
+    return this.get('model.user.id') === this.get('session.uid');
   })
 });

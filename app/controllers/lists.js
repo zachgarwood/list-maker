@@ -6,7 +6,7 @@ export default Ember.Controller.extend({
       let controller = this;
       controller.store.find(
         'user',
-        controller.get('session.currentUser.id')
+        controller.get('session.uid')
       ).then((user) => {
         let list = controller.store.createRecord('list', {
           description: controller.get('description'),

@@ -12,7 +12,7 @@ export default Ember.Route.extend({
       let route = this;
       route.store.find(
         'user',
-        route.get('session.currentUser.id')
+        route.get('session.uid')
       ).then((user) => {
         let list = route.store.createRecord('list', {
           description: 'New untitled list!',
@@ -29,12 +29,12 @@ export default Ember.Route.extend({
       var route = this;
       var store = this.get('store');
       this.get('session').open('firebase', { provider: provider }).then(function(data) {
-        store.find('user', data.currentUser.id).then(function() {
+        store.find('user', data.uid).then(function() {
           // noop
         }, function() {
           var user = store.createRecord(
             'user',
-            { id: data.currentUser.id, displayName: data.currentUser.displayName }
+            { id: data.uid, displayName: data.currentUser.displayName }
           );
           user.save();
         });

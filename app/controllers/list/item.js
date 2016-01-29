@@ -20,7 +20,7 @@ export default Ember.Controller.extend({
   ableToEdit: Ember.computed('currentlyEditing', 'belongsToUser', function() {
     return this.get('currentlyEditing') && this.get('belongsToUser');
   }),
-  belongsToUser: Ember.computed('model.user.id', 'session.currentUser.id', function() {
-    return this.get('model.user.id') === this.get('session.currentUser.id');
+  belongsToUser: Ember.computed('model.user.id', 'session.uid', function() {
+    return this.get('model.user.id') === this.get('session.uid');
   })
 });

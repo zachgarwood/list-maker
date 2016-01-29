@@ -1,21 +1,24 @@
 <div class='page-header'>
     <h2>{{list-title list=model}}</h2>
+    {{#unless belongsToUser}}
+        <p>by {{model.user.displayName}}</p>
+    {{/unless}}
 
-    {{#if belongsToUser}}
-        {{#bs-form formLayout='inline'}}
-            <div class='form-group'>
-                {{input value=model.description focus-out='update' class='form-control'}}
-            </div>
-            {{#bs-button action='delete' type='danger'}}
-                {{fa-icon 'trash'}} Delete
-            {{/bs-button}}
+    {{#bs-form formLayout='inline'}}
+        {{#if belongsToUser}}
+                <div class='form-group'>
+                    {{input value=model.description focus-out='update' class='form-control'}}
+                </div>
+                {{#bs-button action='delete' type='danger'}}
+                    {{fa-icon 'trash'}} Delete
+                {{/bs-button}}
+        {{/if}}
+        {{#if session.isAuthenticated}}
             {{#bs-button action='addItem' type='primary'}}
                 {{fa-icon 'plus'}} Add new item
             {{/bs-button}}
-        {{/bs-form}}
-    {{else}}
-        <p>by {{model.user.displayName}}</p>
-    {{/if}}
+        {{/if}}
+    {{/bs-form}}
 </div>
 
 <div class='list-group'>
