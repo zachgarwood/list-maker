@@ -7,10 +7,7 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('lists', {path: '/'});
-  this.route('list', {path: '/list/:list_id'}, function() {
-    this.route('item', {path: '/item/:item_id'});
-  });
-  this.route('item', {path: '/item/:item_id'});
+  this.route('list', {path: '/list/:list_id'}, function() {});
   this.route('signin');
 });
 
