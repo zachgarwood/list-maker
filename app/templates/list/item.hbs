@@ -5,7 +5,9 @@
     </p>
     {{#if model.image}}
         <p class='list-group-item-text'>
-            <img src='{{model.image}}' width='500px' alt='{{model.title}}'/>
+            <a href='{{model.image}}' target='_blank'>
+                <img src='{{model.image}}' alt='{{model.title}}'/>
+            </a>
         </p>
     {{/if}}
     {{#if belongsToUser}}
