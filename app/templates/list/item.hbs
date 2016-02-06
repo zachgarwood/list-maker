@@ -8,7 +8,8 @@
             <a href='{{model.image}}' target='_blank'>
                 {{#if gifV}}
                     <video autoplay='' loop='' muted=''>
-                        <source type='video/webm' src='{{gifV}}'>
+                        <source type='video/webm' src='{{gifV}}.webm'>
+                        <source type='video/mp4' src='{{gifV}}.mp4'>
                     </video>
                 {{else}}
                     <img src='{{model.image}}' alt='{{model.title}}'>

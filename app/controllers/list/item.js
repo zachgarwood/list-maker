@@ -27,7 +27,6 @@ export default Ember.Controller.extend({
     let imageParts = this.get('model.image').split('.');
     let fileType = imageParts.pop();
     if (fileType.toLowerCase() === 'gifv') {
-      imageParts.push('webm');
       return imageParts.join('.');
     } else {
       return false;
