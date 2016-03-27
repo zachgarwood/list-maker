@@ -1,7 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  listController: Ember.inject.controller('list'),
   actions : {
     delete() {
       this.get('model').destroyRecord();
@@ -14,8 +13,43 @@ export default Ember.Controller.extend({
     toggleEdit() {
       this.get('model').rollbackAttributes();
       this.toggleProperty('currentlyEditing');
-    }
+    },
+    toggleStar() {
+      this.toggleProperty('savingStar');
+      let controller = this;
+      controller.store.find(
+        'user',
+        controller.get('session.uid')
+      ).then((user) => {
+        let item = controller.get('model');
+        if (controller.get('starred')) {
+          this.get('star').destroyRecord();
+          this.toggleProperty('savingStar');
+        } else {
+          let star = controller.store.createRecord('star', { user: user, item: item, });
+          star.save().then((star) => {
+            user.get('stars').addObject(star);
+            user.save();
+            item.get('stars').addObject(star);
+            item.save();
+            this.toggleProperty('savingStar');
+          });
+        }
+      });
+    },
   },
+  starred: Ember.computed('model.stars.[]', function() {
+    let controller = this;
+    return this.get('model.stars').any(function(star) {
+      if (star.get('user.id') === controller.get('session.uid')) {
+        controller.set('star', star);
+        return true;
+      }
+      return false;
+    });
+  }),
+  star: null,
+  savingStar: false,
   currentlyEditing: false,
   ableToEdit: Ember.computed('currentlyEditing', 'belongsToUser', function() {
     return this.get('currentlyEditing') && this.get('belongsToUser');

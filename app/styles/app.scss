@@ -14,9 +14,26 @@
     margin-left: auto;
     margin-right: auto;
 }
+.list-group-item {
+    background-color: #f8f8f8;
+}
 .list-group-item-text {
     img, video {
         max-height: 400px;
         max-width: 100%;
+    }
+}
+.list-group-item-heading {
+    .fa-star {
+        color: #fbbc05;
+        &:hover {
+            color: gray;
+        }
+    }
+    .fa-star-o {
+        color: gray;
+        &:hover {
+            color: #fbbc05;
+        }
     }
 }
